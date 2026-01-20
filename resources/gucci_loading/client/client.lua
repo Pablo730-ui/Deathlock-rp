@@ -1,0 +1,10 @@
+-- RegisterNUICallback("openLink", function(data, cb)
+--     local url = data.url
+--     if url and type(url) == "string" then
+--         SetClipboard(url) -- or notify the user
+--         TriggerEvent("chat:addMessage", {
+--             args = { "📎 Link copied to clipboard: " .. url }
+--         })
+--     end
+--     cb({})
+-- end)

@@ -1,0 +1,191 @@
+{
+    "selectedColor": "#FCD376",
+    "backgroundImage": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/licenseplate.png",
+    "backgroundVideo": "",
+    "watermark": { 
+        "label": { "text": "The Vibe RP", "colorWordCount": 2 }, 
+        "subHeading": "Loading Screen", 
+        "logo": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/Vibe-Logo-modified(1).png" 
+    },
+    "socialHeaders": [
+        { 
+            "type": "discord", 
+            "cardLabel": "Discord Server", 
+            "cardInfo": "Join the discord to keep up with the latest on the FiveM server!", 
+            "link": "https://discord.gg/BetjMuDbC2", 
+            "enabled": true 
+        },
+        { 
+            "type": "instagram", 
+            "cardLabel": "Instagram Page", 
+            "cardInfo": "Follow the instagram page for more content!", 
+            "link": "https://instagram.com", 
+            "enabled": true 
+        },
+        { 
+            "type": "telegram", 
+            "cardLabel": "Telegram Channel", 
+            "cardInfo": "Join the telegram channel for more news and updates!", 
+            "link": "https://telegram.com", 
+            "enabled": false 
+        },
+        { 
+            "type": "youtube", 
+            "cardLabel": "Youtube Channel", 
+            "cardInfo": "Subscribe to the youtube channel for more updates!",
+            "link": "https://youtube.com", 
+            "enabled": true 
+        },
+        { 
+            "type": "tiktok", 
+            "cardLabel": "Tik Tok Channel", 
+            "cardInfo": "Follow us on tik tok for more content!", 
+            "link": "https://discord.gg/dbFChqBh5u", 
+            "enabled": true 
+        },
+        {
+            "type": "custom",
+            "cardLabel": "Tebex Store",
+            "cardInfo": "Purchase perks and content through our Tebex store!",
+            "link": "https://your-tebex-link-here",
+            "buttonLabel": "Shop Now",
+            "enabled": true,
+
+            "imagePath": "./assets/jpg/tebex.jpg",
+            "imageWidth": "3vw",
+            "imageHeight": "3vh"
+        }
+    ],
+    "customPanels": [
+        {
+            "panelPosition": 3,
+            "uniqueId": "updates",
+            "buttonLabel": "Updates",
+            "icon": "fa-circle", 
+            "cardHeaderLabel": "Latest City Updates",
+            "singularLabel": "Update",
+            "entries": [
+                "Daily job based quests with reward system", 
+                "Loot boxes with provable fairness and security", 
+                "New 200+ lore friendly vehicles added with more on the way",
+                "Vehicle rarity system with discord webhook integrations"
+            ]
+        }
+    ],
+    "rules": [
+        "No griefing or trolling other players.",
+        "Respect all admins and staff decisions.",
+        "No hacking, exploiting, or modding\nin unfair ways.",
+        "Keep your behavior mature\nand respectful at all times.",
+        "Do not spam the chat\nor use slurs or hate speech."
+    ],
+    "teamMembers": [
+        { "name": "GucciFlipFlops", "role": "Head Developer", "discord": "pakinextdoor", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/fakalheadshot.png" },
+        { "name": "HerGTR", "role": "Founding Member", "discord": "dwboutit", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/gatorheadshot.png" },
+        { "name": "Mitch", "role": "Founding Member", "discord": "builtlikemitch", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/mitchheadshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "GucciFlipFlops", "role": "Head Developer", "discord": "pakinextdoor", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/fakalheadshot.png" },
+        { "name": "HerGTR", "role": "Founding Member", "discord": "dwboutit", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/gatorheadshot.png" },
+        { "name": "Mitch", "role": "Founding Member", "discord": "builtlikemitch", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/mitchheadshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "name": "Haz", "role": "Founding Member", "discord": "spooky1001", "image": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" }
+    ],
+    "gallery": [
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/fivemsupranrcisist.jpg"},
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/sunsetsupraitsugsik.jpg"},
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/midiguess.jpg"},
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/hellcatdurangoitsugsik.jpg"},
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/IMG_2135.jpeg"},
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/oldies2.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/oldies1.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/supra6.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/supra5.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/mitch-donk1.jpg" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/mitch-donk2.jpg" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/mitch-donk3.jpg" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/supra3.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/supra4.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/bluebmw.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/headshot.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/supra2.png" },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/rarri_lol.jpg"}
+    ],
+    "keyboardShortcuts": {
+        "keys": [
+            { 
+                "key": "B", 
+                "onFoot": "Point",
+                "inCar": "Put on seatbelt"
+            },
+            { 
+                "key": "Left Arrow", 
+                "onFoot": null,
+                "inCar": "Left Indicator"
+            },
+            { 
+                "key": "Right Arrow", 
+                "onFoot": null,
+                "inCar": "Right Indicator"
+            },
+            { 
+                "key": "Up Arrow", 
+                "onFoot": null,
+                "inCar": "Hazard Lights"
+            },
+            { 
+                "key": "M", 
+                "onFoot": "Pull out phone",
+                "inCar": null
+            },
+            {
+                "key": "L", 
+                "onFoot": "Lock vehicle",
+                "inCar": null
+            },
+            {
+                "key": "G", 
+                "onFoot": null,
+                "inCar": "Toggle vehicle engine on/off"
+            },
+            {
+                "key": "J", 
+                "onFoot": "Park vehicle",
+                "inCar": null
+            },
+            {
+                "key": "Z", 
+                "onFoot": "Open radial menu",
+                "inCar": null
+            },
+            {
+                "key": "X", 
+                "onFoot": "Hands up",
+                "inCar": null
+            },
+            {
+                "key": "0", 
+                "onFoot": null,
+                "inCar": "Vehicle controller"
+            },
+            {
+                "key": "LALT", 
+                "onFoot": "Third eye view",
+                "inCar": null
+            }
+        ]
+    },
+    "music": [
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/1008gs.mp3", "title": "1008 Grams", "artist": "OT7 Quanny", "image": null },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/free_g.mp3", "title": "Free G", "artist": "SDot Go", "image": null },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/gta.mp3", "title": "GTA", "artist": "Future, Metro Boomin", "image": null },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/like_that.mp3", "title": "Like That", "artist": "Future, Metro Boomin", "image": null },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/stop_me.mp3", "title": "Stop Me When I'm Lyin'", "artist": "RX Papi", "image": null },
+        { "path": "https://r2.fivemanage.com/RbWsMGdZTi3Ptu8LbeSp9/type_shi.mp3", "title": "Type Shit", "artist": "Future, Metro Boomin", "image": null }
+    ],
+    "defaultVolume": 1
+}
