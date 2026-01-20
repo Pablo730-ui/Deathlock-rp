@@ -1,0 +1,69 @@
+name: Deploy to ZAP Hosting (Stable FTP Only)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - '.ftp-deploy-sync-state.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Free disk space on runner
+        run: |
+          echo "Disk usage before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache
+          sudo apt-get clean
+          echo "Disk usage after cleanup:"
+          df -h
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload to ZAP (Stable FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.2
+        with:
+          server: ${{ secrets.ZAP_HOST }}
+          username: ${{ secrets.ZAP_USER }}
+          password: ${{ secrets.ZAP_PASS }}
+
+          protocol: ftp
+          port: 21
+
+          timeout: 600000
+
+          local-dir: ./resources/
+          server-dir: /g696528/fivem/QBCore_6DD08E.base/resources/
+
+          state-name: ftp-sync-state.json
+          dangerous-clean-slate: false
+
+          exclude: |
+            # Version control
+            **/.git/**
+            **/.github/**
+            
+            # Cache and temp files
+            **/cache/**
+            **/txData/**
+            **/*.log
+            **/*.sql
+            **/*.db
+            **/*.RPT
+            **/*.mdmp
+            **/*.stacktrace
+            
+            # Node modules and build files
+            **/node_modules/**
+            **/npm-debug.log*
+            **/yarn-debug.log*
+            
+            # Documentation
+            **/README.md
+            **/LICENSE
+            **/*.md
