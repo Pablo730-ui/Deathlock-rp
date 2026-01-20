@@ -41,7 +41,7 @@ jobs:
           server-dir: /g696528/fivem/QBCore_6DD08E.base/resources/
 
           state-name: ftp-sync-state.json
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
 
           exclude: |
             # Version control
