@@ -4,36 +4,33 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore:
-      -'.ftp-deploy-sync-state.json',
+      - '.ftp-deploy-sync-state.json'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      
-name: Free disk space on runner
-      run: |
-        echo "Disk usage before cleanup:"
-        df -h
-        sudo rm -rf /usr/share/dotnet
-        sudo rm -rf /opt/ghc
-        sudo rm -rf /opt/hostedtoolcache
-        sudo apt-get clean
-        echo "Disk usage after cleanup:"
-        df -h,
+      - name: Free disk space on runner
+        run: |
+          echo "Disk usage before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache
+          sudo apt-get clean
+          echo "Disk usage after cleanup:"
+          df -h
 
-      
-name: Checkout
-      uses: actions/checkout@v4,
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      
-name: Upload to ZAP (Stable FTP)
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.2
-      with:
-        server: ${{ secrets.ZAP_HOST }}
-        username: ${{ secrets.ZAP_USER }}
-        password: ${{ secrets.ZAP_PASS }},
+      - name: Upload to ZAP (Stable FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.2
+        with:
+          server: ${{ secrets.ZAP_HOST }}
+          username: ${{ secrets.ZAP_USER }}
+          password: ${{ secrets.ZAP_PASS }}
 
           protocol: ftp
           port: 21
@@ -48,25 +45,25 @@ name: Upload to ZAP (Stable FTP)
 
           exclude: |
             # Version control
-            /.git/
-            /.github/
-
-Cache and temp files,
-            /cache/
-            /txData/
-            /*.log
-            /.sql
-            **/.db
-            /*.RPT
-            /.mdmp
-            **/.stacktrace
-
-Node modules and build files,
-            /node_modules/
-            /npm-debug.log*
-            /yarn-debug.log*
-
-Documentation,
-            /README.md
-            /LICENSE
-            */.md
+            **/.git/**
+            **/.github/**
+            
+            # Cache and temp files
+            **/cache/**
+            **/txData/**
+            **/*.log
+            **/*.sql
+            **/*.db
+            **/*.RPT
+            **/*.mdmp
+            **/*.stacktrace
+            
+            # Node modules and build files
+            **/node_modules/**
+            **/npm-debug.log*
+            **/yarn-debug.log*
+            
+            # Documentation
+            **/README.md
+            **/LICENSE
+            **/*.md
