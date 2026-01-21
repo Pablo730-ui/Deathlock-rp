@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVariation>
+  <variationData>
+    <Item>
+      <modelName>pvtjv</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            1
+            1
+            7
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            1
+            1
+            7
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            2
+            2
+            5
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            2
+            2
+            5
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            3
+            3
+            24
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            3
+            3
+            24
+            156
+            129
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            4
+            4
+            111
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            4
+            4
+            111
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            111
+            111
+            0
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            111
+            111
+            0
+            156
+            129
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            62
+            62
+            67
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            62
+            62
+            67
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            63
+            63
+            67
+            156
+            22
+            122
+          </indices>          
+        </Item>
+								<Item>
+          <indices content="char_array">
+            63
+            63
+            67
+            156
+            129
+            122
+          </indices>          
+        </Item>
+        <Item>
+          <indices content="char_array">
+            34
+            34
+            33
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            34
+            34
+            33
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            31
+            31
+            32
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            31
+            31
+            32
+            156
+            129
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+		    						49
+            49
+            65
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+		    						49
+            49
+            65
+            156
+            129
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            100
+            100
+            111
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            100
+            100
+            111
+            156
+            129
+            122
+          </indices>
+        </Item>
+        <Item>
+          <indices content="char_array">
+            93
+            93
+            107
+            156
+            22
+            122
+          </indices>
+        </Item>
+								<Item>
+          <indices content="char_array">
+            93
+            93
+            107
+            156
+            129
+            122
+          </indices>
+        </Item>
+      </colors>
+      <kits>
+        <Item>825_pvtjv_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+				<Probabilities>
+					<Item>
+						<Name>Police guv plate</Name>
+						<Value value="100" />
+					</Item>
+				</Probabilities>
+			</plateProbabilities>
+      <lightSettings value="72"/>
+      <sirenSettings value="11076123115"/>
+    </Item>
+ </variationData>
+</CVehicleModelInfoVariation>
