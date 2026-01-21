@@ -13,7 +13,7 @@ SDC.PoliceJobs = {
     ["police"] = "Police"
 }
 
-SDC.CurrentYear = 2024 --The current year we are in. This is to make correct Date Of Births
+SDC.CurrentYear = 2026 --The current year we are in. This is to make correct Date Of Births
 
 SDC.DistToCancelPullover = 65 --How far you have to be from the ped before it auto cancels the pullover
 
