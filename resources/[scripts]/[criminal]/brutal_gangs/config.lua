@@ -10,7 +10,7 @@ More informations about the script:   https://docs.brutalscripts.com
 --]]
 
 Config = {
-    Core = 'ESX',  -- 'ESX' / 'QBCORE' | Other core setting on the 'core' folder.
+    Core = 'QBCORE',  -- 'ESX' / 'QBCORE' | Other core setting on the 'core' folder.
     Inventory = 'ox_inventory', -- 'ox_inventory' / 'qb_inventory' / 'quasar_inventory' / 'chezza_inventory' / 'codem_inventory' / 'core_inventory' / 'origen_inventory' / 'ps-inventory' / 'tgiann-inventory' // Custom can be add in the cl_utils.lua!!!
     Wardrobe = 'default', -- 'default' / 'ak47_clothing' / 'codem_apperance' / 'fivem_appearance' / 'illenium_appearance' / 'qb_clothing' / 'raid_clothes' / 'rcore_clothes' / 'rcore_clothing' / 'sleek_clothestore' / 'tgiann_clothing' // Custom can be add in the cl_utils.lua!!!
     TextUI = 'brutal_textui', -- false / 'brutal_textui' / 'ox_lib' / 'okokTextUI' / 'ESXTextUI' / 'QBDrawText' // Custom can be add in the cl_utils.lua!!!
