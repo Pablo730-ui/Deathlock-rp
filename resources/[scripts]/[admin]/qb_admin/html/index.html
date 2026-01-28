@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>919 Admin Panel</title>
+    
+    <!-- External CSS Dependencies -->
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Electrolize&family=Inter:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/toggle-bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/toggle-bootstrap-dark.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-toaster.css" rel="stylesheet">
+    <link href="assets/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <link href="assets/css/jquery.minicolors.css" rel="stylesheet">
+    <link href="assets/css/leaflet.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="assets/js/leaflet.js"></script>
+</head>
+
+<body id="page-top" class="bootstrap">
+    <div class="playerwarning" id="playerwarning">
+        <div class="warning-title">
+            <h1 id="warningTitleh1"></h1>
+            <h3><span id="warningTitleReason"></span>  <span id="warnreason"></span></h3>
+            <h3><span id="warningTitleBy"></span>  <span id="warnadmin"></span></h3>
+            <h3><span id="warningTitleReadRules"></span></h3>
+        </div>
+        <div class="warning-body">
+            <h6><span id="warningBodyPressHold"></span></h6>
+        </div>
+    </div>
+    <div class="reportbox bootstrap-dark" id="reportbox">
+        <form id="reportform">
+            <div class="reporttitle">
+                <span id="reportTitle"></span> 
+                <button type="button" id="reportscreenclose" style="float:right" class="reportclosebtn" aria-label="Close"></button>
+            </div>
+            <div class="row mb-3">
+                <label for="inputSubject" class="col-sm-2 col-form-label"><span id="inputSubjectTranslate"></span></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputSubject">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputInfo" class="col-sm-2 col-form-label"><span id="inputInfoTranslation"></span></label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="inputInfo" rows="10"></textarea>
+                </div>
+            </div>
+            <fieldset class="row mb-3">
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="typeoption" id="supportoption" value="Support"
+                            checked>
+                        <label class="form-check-label" for="supportoption">
+                            <span id="supportoptionTranslation"></span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="typeoption" id="reportoption" value="PlayerReport">
+                        <label class="form-check-label" for="reportoption">
+                            <span id="reportoptionTranslate"></span>
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <button id="reportsubmit" class="btn btn-primary"><span id="SendReportTranslation"></span></button>
+        </form>
+    </div>
+    <div id="mainbox">
+        <div id="wrapper">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a id="logo" class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                    <div class="sidebar-brand-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">919ADMIN <sup id="roleName"></sup></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item active" id="dashboardpagebtn">
+                    <a class="nav-link" href="#" id="dashboardpagebtn">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span id="DashboardTranslation"></span></a>
+                </li>
+                <li class="nav-item" id="adminchatbtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-comment-dots"></i>
+                        <span id="adminChatTranslation"></span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">
+                    <span id="AdministrationTranslate"></span>
+                </div>
+                <li class="nav-item" id="playerlistpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span id="PlayersTranslate"></span></a>
+                </li>
+                <li class="nav-item" id="mappagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-globe"></i>
+                        <span id="MapTranslation"></span></a>
+                </li>
+                <li class="nav-item" id="reportspagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-clipboard"></i>
+                        <span id="ReportsTranslate"></span></a>
+                </li>
+                <li class="nav-item" id="jobpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-user-md"></i>
+                        <span id="JobsTranslate"></span></a>
+                </li>
+                <li class="nav-item" id="gangpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span id="GangsTranslate"></span></a>
+                </li>
+                <li class="nav-item" id="resourcelistpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span id="ResourcesTranslate"></span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">
+                    <span id="databaseInteractionTranslate"></span>
+                </div>
+                <li class="nav-item" id="banpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-gavel"></i>
+                        <span id="BansTranslate"></span></a>
+                </li>
+                <li class="nav-item" id="characterspagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-users-cog"></i>
+                        <span id="CharactersTranslate"></span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">
+                    <span id="serverInformationTranslate"></span>
+                </div>
+                <li class="nav-item" id="serverpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-server"></i>
+                        <span id="ServerMetricsTranslation"></span></a>
+                </li>
+                <li class="nav-item" id="logviewerpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-info-circle"></i>
+                        <span id="LogViewerTranslation"></span></a>
+                </li>
+                <li class="nav-item" id="itemspagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-box-open"></i>
+                        <span id="ItemsListTranslation"></span></a>
+                </li>
+                <li class="nav-item" id="vehspagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-car"></i>
+                        <span id="VehiclesListTranslation"></span></a>
+                </li>
+
+                <li class="nav-item" id="leaderboardpagebtn">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-info-circle"></i>
+                        <span id="LeaderboardsTranslation"></span></a>
+                </li>
+            </ul>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow draggable">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="">
+                            <h1 class="h3" id="heading"><span id="DashboardTranslation2"></span></h1>
+                        </div>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control border-0 small"
+                                                placeholder="Search for..." aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline small" id="adminname"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" id="settingsPanelBtn" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        <span id="settingsTranslate"></span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" id="closePanelBtn">
+                                        <i class="fas fa-window-close fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        <span id="closePanelTranslate"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div id="pagealert" class="container-fluid" style="display:none">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div id="pagealerttype" class="alert alert-dismissible" role="alert">
+                                    <span id="alerttext"></span>
+                                    <button type="button" id="hidealert" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loadingspinner" id="loading">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only" id="loadingTranslate"></span>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="dashboardpage">
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6 mb-6">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    <span id="totalPlayersOnlineTranslate"></span>
+                                                </div>
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col-auto">
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold" id="playersonline">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="progress progress-sm mr-2">
+                                                            <div class="progress-bar bg-info" id="playersonlinebar"
+                                                                role="progressbar" style="width: 50%" aria-valuenow="50"
+                                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-users fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 mb-6">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    <span id="totalStaffOnlineTranslate"></span>
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold" id="staffcount">13</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" id="playercountgraph">
+
+                            <div class="col-xl-12">
+    
+                                <!-- Area Chart -->
+                                <div class="card shadow mb-4">
+                                    <a href="#playerCountCollapse" class="card-header py-3" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="playerCountCollapse">
+                                        <h6 class="m-0 font-weight-bold text-primary">Player Count History</h6>
+                                    </a>
+                                    <div class="collapse show" id="playerCountCollapse" style="">
+                                        <div class="card-body">
+                                            <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                                <canvas id="playerCountChart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body" id="actionsField">
+                                            <!-- First Row: Essential Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-4" id="selfactionsgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-success text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-user mr-2"></i>
+                                                                Essential Actions
+                                                            </h6>
+                                            </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="revives">
+                                                                <i class="fas fa-medkit mr-1"></i>
+                                                                <span id="ReviveTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="feeds">
+                                                                <i class="fas fa-utensils mr-1"></i>
+                                                                <span id="FeedSelfTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="uncuffSelf">
+                                                                <i class="fas fa-unlock mr-1"></i>
+                                                                <span id="unCuffTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="goback">
+                                                                <i class="fas fa-undo mr-1"></i>
+                                                                <span id="GoBackTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="tpm">
+                                                                <i class="fas fa-map-marker-alt mr-1"></i>
+                                                                <span id="GoToMarkerTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="sclothing">
+                                                                <i class="fas fa-tshirt mr-1"></i>
+                                                                <span id="ClothingMenuTranslate"></span>
+                                                            </button>
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                                <div class="col-lg-4 mb-4">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-warning text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-magic mr-2"></i>
+                                                                Movement & Powers
+                                                            </h6>
+                                            </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-secondary btn-sm action mb-2 mr-2" data-action="invisibility">
+                                                                <i class="fas fa-eye-slash mr-1"></i>
+                                                                <span id="invisibleTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="fastrun">
+                                                                <i class="fas fa-running mr-1"></i>
+                                                                <span id="fastRunTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="noclip">
+                                                                <i class="fas fa-ghost mr-1"></i>
+                                                                <span id="noclipTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="godmode">
+                                                                <i class="fas fa-shield-alt mr-1"></i>
+                                                                <span id="godTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="superjump">
+                                                                <i class="fas fa-arrow-up mr-1"></i>
+                                                                <span id="superjumpTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="noragdoll">
+                                                                <i class="fas fa-male mr-1"></i>
+                                                                <span id="noragdollTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="infinitestam">
+                                                                <i class="fas fa-heartbeat mr-1"></i>
+                                                                <span id="infinitestamTranslate"></span>
+                                                            </button>
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                                <div class="col-lg-4 mb-4">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-info text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-eye mr-2"></i>
+                                                                Display & Care
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="playerblips">
+                                                                <i class="fas fa-map mr-1"></i>
+                                                                <span id="playerBlipsTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="playernames">
+                                                                <i class="fas fa-id-badge mr-1"></i>
+                                                                <span id="playerNamesTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="forceradar">
+                                                                <i class="fas fa-wifi mr-1"></i>
+                                                                <span id="togradarTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="clearblood">
+                                                                <i class="fas fa-shower mr-1"></i>
+                                                                <span id="clearbloodTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="wetclothes">
+                                                                <i class="fas fa-tint mr-1"></i>
+                                                                <span id="wetclothesTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="dryclothes">
+                                                                <i class="fas fa-sun mr-1"></i>
+                                                                <span id="dryclothesTranslate"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Second Row: Server & Teleport Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-4" id="teleportsgroup">
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="serveractionsgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-primary text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-server mr-2"></i>
+                                                                <span id="serverActionsTranslateSelf"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="reviveall">
+                                                                <i class="fas fa-medkit mr-1"></i>
+                                                                <span id="reviveallTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="messageall">
+                                                                <i class="fas fa-bullhorn mr-1"></i>
+                                                                <span id="messageallTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-action="setweather" id="setWeatherButton">
+                                                                <i class="fas fa-cloud-sun mr-1"></i>
+                                                                <span id="setweatherTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-action="settime" id="setTimeButton">
+                                                                <i class="fas fa-clock mr-1"></i>
+                                                                <span id="settimeTranslate"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="managementgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-danger text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-cogs mr-2"></i>
+                                                                Management
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="clearreports">
+                                                                <i class="fas fa-trash-alt mr-1"></i>
+                                                                <span id="clearReportsTranslation"></span>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="clearadminchat">
+                                                                <i class="fas fa-comment-slash mr-1"></i>
+                                                                <span id="clearAdminChatTranslation"></span>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="clearlogs">
+                                                                <i class="fas fa-file-alt mr-1"></i>
+                                                                <span id="clearLogsTranslation"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Third Row: Specialized Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-4" id="vehicleactionsgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-info text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-car mr-2"></i>
+                                                                <span id="vehicleActionsTranslateSelf"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="repairvehicle">
+                                                                <i class="fas fa-wrench mr-1"></i>
+                                                                <span id="repairvTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-action="fillgastank">
+                                                                <i class="fas fa-gas-pump mr-1"></i>
+                                                                <span id="filltankTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="washvehicle">
+                                                                <i class="fas fa-spray-can mr-1"></i>
+                                                                <span id="washTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="maxperformanceupgrades">
+                                                                <i class="fas fa-tachometer-alt mr-1"></i>
+                                                                <span id="maxpupgradesTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-secondary btn-sm action mb-2 mr-2" data-action="randomvisualparts">
+                                                                <i class="fas fa-random mr-1"></i>
+                                                                <span id="randvisualpartsTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="setcolor">
+                                                                <i class="fas fa-palette mr-1"></i>
+                                                                <span id="setcolorTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="setlivery">
+                                                                <i class="fas fa-paint-brush mr-1"></i>
+                                                                <span id="setliveryTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-action="setmedriver">
+                                                                <i class="fas fa-user mr-1"></i>
+                                                                <span id="setmedriverTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-action="setmepassenger">
+                                                                <i class="fas fa-user-friends mr-1"></i>
+                                                                <span id="setmepassTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="unlockvehicle">
+                                                                <i class="fas fa-unlock-alt mr-1"></i>
+                                                                <span id="unlockvTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="lockvehicle">
+                                                                <i class="fas fa-lock mr-1"></i>
+                                                                <span id="lockvTranslate"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="devactionsgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-secondary text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-code mr-2"></i>
+                                                                <span id="developerActionsTranslateSelf"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-dark btn-sm action mb-2 mr-2" data-action="vec3">
+                                                                <i class="fas fa-crosshairs mr-1"></i>
+                                                                <span id="vec3Translate"></span>
+                                                            </button>
+                                                            <button class="btn btn-dark btn-sm action mb-2 mr-2" data-action="vec4">
+                                                                <i class="fas fa-compass mr-1"></i>
+                                                                <span id="vec4Translate"></span>
+                                                            </button>
+                                                            <button class="btn btn-dark btn-sm action mb-2 mr-2" data-action="heading">
+                                                                <i class="fas fa-location-arrow mr-1"></i>
+                                                                <span id="headingTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="loadipl">
+                                                                <i class="fas fa-download mr-1"></i>
+                                                                <span id="loadiplTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="unloadipl">
+                                                                <i class="fas fa-upload mr-1"></i>
+                                                                <span id="unloadiplTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-secondary btn-sm action mb-2 mr-2" data-action="setViewDistance">
+                                                                <i class="fas fa-binoculars mr-1"></i>
+                                                                <span id="setViewDistanceTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-dark btn-sm action mb-2 mr-2" data-action="copyEntityInfo">
+                                                                <i class="fas fa-copy mr-1"></i>
+                                                                <span id="copyEntityInfoTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-secondary btn-sm action mb-2 mr-2" data-action="freeaimMode">
+                                                                <i class="fas fa-crosshairs mr-1"></i>
+                                                                <span id="freeaimModeTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="displayVehicles">
+                                                                <i class="fas fa-car mr-1"></i>
+                                                                <span id="displayVehiclesTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="displayPeds">
+                                                                <i class="fas fa-male mr-1"></i>
+                                                                <span id="displayPedsTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-action="displayObjects">
+                                                                <i class="fas fa-cube mr-1"></i>
+                                                                <span id="displayObjectsTranslate"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="entityactionsgroup">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <div class="card-header bg-gradient-dark text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-magic mr-2"></i>
+                                                                <span id="entityActionsTranslateSelf"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-action="spawncar">
+                                                                <i class="fas fa-plus-circle mr-1"></i>
+                                                                <span id="spawnvehicleTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="deleteclosestvehicle">
+                                                                <i class="fas fa-car mr-1"></i>
+                                                                <span id="deleteclosestvehTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="deleteclosestped">
+                                                                <i class="fas fa-user-times mr-1"></i>
+                                                                <span id="deleteclosestpedTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-action="deleteclosestobject">
+                                                                <i class="fas fa-cube mr-1"></i>
+                                                                <span id="deleteclosestobjTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="massdv">
+                                                                <i class="fas fa-bomb mr-1"></i>
+                                                                <span id="massdvTranslate"></span>
+                                                            </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-action="massdp">
+                                                                <i class="fas fa-skull mr-1"></i>
+                                                                <span id="massdpTranslate"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="gangpage">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="gangListTranslation"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshgangbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="list-group list-group-root well" id="ganglist">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" id="resourcelistpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary"><span id="resourceListTranslation"></span></h6>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="row" id="resourcelist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm" id="resourceinfo">
+                                                        <thead id="resourcethead">
+                                                        </thead>
+                                                        <tbody id="resourcetbody">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPageResources" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageResources">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="logviewerpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="logsTranslation"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshlogsbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="row" id="logslist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm table" id="logslisttable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="logTimeTranslation"></span></th>
+                                                                <th scope="col"><span id="logTypeTranslation"></span></th>
+                                                                <th scope="col"><span id="logMessageTranslation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="logslisttbody">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPageLogs" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageLogs">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="vehiclespage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary float-left"><span id="VehiclesListTranslation2"></span></h6>
+                                        <a href="#" class="mt-2 float-right" data-toggle="tooltip" data-placement="top" title="Double click a vehicle's spawn name to spawn it.">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="row" id="vehicleslist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm table" id="vehicleslisttable">
+                                                        <thead id="vehicleslistthead">
+                                                        </thead>
+                                                        <tbody id="vehicleslisttbody">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPageVehicles" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageVehicles">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="playermappage" style="height:90%;">
+                        <div class="row" style="height:100%;">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12" style="height:100%;">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary float-left">Map</h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="maprefreshbtn" data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="playerListCard" style="height:100%;">
+                                        <div class="card-body" style="height:100%;">
+                                            <div id="map" style="width:auto;height:100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="itemspage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary float-left"><span id="itemListTranslation2"></span></h6>
+                                        <a href="#" class="mt-2 float-right" data-toggle="tooltip" data-placement="top" title="Double click an item's spawn name to give it to you or someone else.">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="row" id="itemslist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm table" id="itemslisttable">
+                                                        <thead id="itemslistthead">
+                                                        </thead>
+                                                        <tbody id="itemslisttbody">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPageItems" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageItems">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="characterspage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary"><span id="charactersTranslation"></span></h6>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="row" id="characterslist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm table" id="characterslisttable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="NamecharactersTranslation"></span></th>
+                                                                <th scope="col"><span id="CharNamecharactersTranslation"></span></th>
+                                                                <th scope="col"><span id="CitIdcharactersTranslation"></span></th>
+                                                                <th scope="col"><span id="ActionscharactersTranslation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="characterslisttbody">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPageCharacters" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageCharacters">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" id="jobpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="jobListTranslate"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshjobbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="list-group list-group-root well" id="joblist">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" id="serverpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="ServerMetricsTranslation2"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshdbbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="list-group list-group-root well" id="servermetricslist">
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-primary shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                            <span id="MetricsOwnedVehiclesTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricsvehiclescount">645</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i class="fas fa-car fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-danger shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                                            <span id="MetricsBansTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricsbanscount">645</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i class="fas fa-gavel fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-warning shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                                            <span id="MetricsCharactersTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricscharactercount">3,431</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i
+                                                                            class="fas fa-comments fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-primary shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                            <span id="MetricsUniquePlayersTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricsunique">3,431</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-success shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                            <span id="MetricsCashTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricscash">3,431</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i
+                                                                            class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-success shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                            <span id="MetricsBankTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricsbank">3,431</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i
+                                                                            class="fas fa-money-check-alt fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br/>
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <div class="card border-left-primary shadow h-100 py-2">
+                                                            <div class="card-body">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div
+                                                                            class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                            <span id="MetricsInvTranslation"></span>
+                                                                        </div>
+                                                                        <div class="h5 mb-0 font-weight-bold"
+                                                                            id="metricsitems">3,431</div>
+                                                                    </div>
+                                                                    <div class="col-auto">
+                                                                        <i class="fas fa-box fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="banpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="BanListTranslation"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshbansbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="list-group list-group-root well">
+                                                <div class="row" id="banslist">
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <table class="table table-sm table" id="banslisttable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col"><span id="BanListIdTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListSteamTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListLicenseTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListIPTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListReasonTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListBannedTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListExpireTranslation"></span></th>
+                                                                    <th scope="col"><span id="BanListActionsTranslation"></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="banslisttbody">
+                                                            </tbody>
+                                                        </table>
+                                                        <label for="perPageBans" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                        <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageBans">
+                                                            <option value="10">10</option>
+                                                            <option value="20" selected>20</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="adminchatpage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="adminChatTranslation2"></span></h6>
+                                        <!--
+                                                <div class="btn btn-xs m-0 btn-success float-right" id="refreshbansbtn" data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                            -->
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="adminChatCard">
+                                        <div class="card-body">
+                                            <!--
+                                                    <div class="row">
+                                                        <div class="col-xl-12 col-lg-12">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <button class="btn btn-danger" type="button" id="clearbtnbans">Clear</button>
+                                                                </div>
+                                                                <input type="text" class="form-control"  type="text" id="bansearch" onkeyup="AdminPanel.SearchBans()" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                -->
+                                            <div class="row" id="adminchatrow">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <div id="adminchatbox" style="padding-bottom:2.5rem !important">
+                                                        <ul id="adminchatboxul"
+                                                            style="list-style-type:none;padding-left:0;">
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="input-group mt-2 position-absolute bottom-0 start-0"
+                                                        style="width:98% !important">
+                                                        <div class="input-group-prepend">
+                                                            <button class="btn btn-primary" type="button"
+                                                                id="adminchatsend"><span id="sendTranslation"></span></button>
+                                                        </div>
+                                                        <input type="text" class="form-control" type="text"
+                                                            id="adminchattext" placeholder="Type a message here..."
+                                                            aria-label="" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid" id="reportspage">
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 float-left font-weight-bold text-primary"><span id="ReportsTranslation"></span></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshreportsbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="quickActionsCard">
+                                        <div class="card-body">
+                                            <div class="list-group list-group-root well">
+                                                <div class="row" id="reportslist">
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <table class="table table-sm table" id="reportslisttable">
+                                                            <thead id="reportslistthead">
+                                                            </thead>
+                                                            <tbody id="reportslisttbody">
+                                                            </tbody>
+                                                        </table>
+                                                        <label for="perPageReports" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                        <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPageReports">
+                                                            <option value="10">10</option>
+                                                            <option value="20" selected>20</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                    <div class="container-fluid" id="playerlistpage">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary float-left" id="numplayers"></h6>
+                                        <div class="btn btn-xs m-0 btn-success float-right" id="refreshbtn"
+                                            data-toggle="tooltip" title="Refresh"><i class="fas fa-sync-alt"></i></div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="playerListCard">
+                                        <div class="card-body">
+                                            <div class="row" id="mainplayerlist">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <table class="table table-sm table" id="playerlisttable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col" data-sortas="numeric"><span id="PlayerIdTranslation"></span></th>
+                                                                <th scope="col"><span id="PlayerSteamTranslation"></span></th>
+                                                                <th scope="col"><span id="PlayerCharacterTranslation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="mainplayerlist2">
+                                                        </tbody>
+                                                    </table>
+                                                    <label for="perPagePlayers" style="float:left;padding-top:5px;">Rows per page: </label>
+                                                    <select class="form-control" style="max-width:80px;float:left;margin-left:10px;" id="perPagePlayers">
+                                                        <option value="10">10</option>
+                                                        <option value="20" selected>20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid" id="playerpage">
+                        <div class="row">
+                            <div class="col-12" id="playerInfoColumn">
+                                                                <div class="card shadow">
+                                    <!-- Combined Card Header -->
+                                    <div class="bg-gradient-primary text-white py-2 px-3 rounded-top">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="btn btn-sm btn-light mr-2" id="goback"
+                                                        data-toggle="tooltip" title="Go Back">
+                                                        <i class="fas fa-undo-alt text-primary"></i>
+                                                    </div>
+                                                    <div class="btn btn-sm btn-light" id="refresh"
+                                                        data-toggle="tooltip" title="Refresh">
+                                                        <i class="fas fa-sync-alt text-success"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="player-avatar bg-white rounded-circle d-flex align-items-center justify-content-center mr-2" style="width: 40px; height: 40px;">
+                                                        <i class="fas fa-user text-primary"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0 font-weight-bold">
+                                                            <span id="charname">Player Name</span>
+                                                        </h5>
+                                                        <small class="text-white-50">
+                                                            <i class="fas fa-id-card mr-1"></i>
+                                                            <span id="citizenid">Citizen ID</span>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                <div class="d-flex flex-column align-items-end">
+                                                    <div class="player-status" id="playerstatus">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="playerInformationCard">
+                                        <div class="card-body p-0">
+
+                            <div class="p-3">
+                                <!-- Character Information Section -->
+                                <div class="row mb-2">
+                                    <div class="col-md-4">
+                                        <div class="info-card p-2 rounded">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-venus-mars text-info mr-2"></i>
+                                                <div>
+                                                    <small class="text-muted d-block"><span id="PlayerGenderTranslation">Gender</span></small>
+                                                    <span class="font-weight-bold" id="gender">Male</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="info-card p-2 rounded">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-flag text-warning mr-2"></i>
+                                                <div>
+                                                    <small class="text-muted d-block"><span id="PlayerNationalityTranslation">Nationality</span></small>
+                                                    <span class="font-weight-bold" id="nationality">American</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="info-card p-2 rounded">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-car text-primary mr-2"></i>
+                                                <div>
+                                                    <small class="text-muted d-block"><span id="PlayerVehiclesTranslation">Vehicles Owned</span></small>
+                                                    <span class="font-weight-bold" id="amountofVehicles">3</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Contact & Last Seen Information Section -->
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <div class="info-card p-2 rounded">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-phone text-success mr-2"></i>
+                                                <div>
+                                                    <small class="text-muted d-block"><span id="PlayerPhoneTranslation">Phone</span></small>
+                                                    <span class="font-weight-bold" id="phoneno">555-0123</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info-card p-2 rounded">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-clock text-secondary mr-2"></i>
+                                                <div>
+                                                    <small class="text-muted d-block">Last Online</small>
+                                                    <span class="font-weight-bold" id="lastOnline">2 hours ago</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Financial Information Section -->
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <div class="card border-left-success shadow-sm">
+                                            <div class="card-body py-2">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="font-weight-bold text-success text-uppercase mb-1">
+                                                            <span id="PlayerCashTranslation">Cash</span>
+                                                        </div>
+                                                        <div class="h6 mb-0 font-weight-bold">
+                                                            <span id="cash">5,250</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-dollar-sign fa-lg text-success"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-left-info shadow-sm">
+                                            <div class="card-body py-2">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="font-weight-bold text-info text-uppercase mb-1">
+                                                            <span id="PlayerBankTranslation">Bank</span>
+                                                        </div>
+                                                        <div class="h6 mb-0 font-weight-bold">
+                                                            <span id="bank">125,000</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-university fa-lg text-info"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Job & Gang Information Section -->
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <div class="card border-left-primary shadow-sm">
+                                            <div class="card-body py-2">
+                                                <h6 class="font-weight-bold text-primary mb-1">
+                                                    <span id="PlayerJobTranslation">Job</span>
+                                                </h6>
+                                                <div class="mb-1">
+                                                    <span class="font-weight-bold" id="job">Police</span> - 
+                                                    <span id="rank">Officer</span>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <small id="jobbossdisplay">
+                                                        <span id="PlayerBossTranslation">Boss</span>: 
+                                                        <span class="badge badge-info" id="jobboss">No</span>
+                                                    </small>
+                                                    <small>
+                                                        <span id="PlayerDutyTranslation">On Duty</span>: 
+                                                        <span class="badge badge-success" id="duty">Yes</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-left-danger shadow-sm">
+                                            <div class="card-body py-2">
+                                                <h6 class="font-weight-bold text-danger mb-1">
+                                                    <span id="PlayerGangTranslation">Gang</span>
+                                                </h6>
+                                                <div class="mb-1">
+                                                    <span class="font-weight-bold" id="gang">None</span> - 
+                                                    <span id="gangrank">N/A</span>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <small>
+                                                        <span id="PlayerBossTranslation2">Boss</span>: 
+                                                        <span class="badge badge-secondary" id="gangboss">No</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Player Stats Section -->
+                                <div class="row mb-2">
+                                    <div class="col-md-3">
+                                        <div class="card border-left-success shadow-sm h-100">
+                                            <div class="card-body py-2">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <i class="fas fa-heart text-success mr-2"></i>
+                                                    <span class="font-weight-bold"><span id="PlayerHealthTranslation">Health</span></span>
+                                                </div>
+                                                <div class="progress mb-1" style="height: 6px;">
+                                                    <div id="healthprogress" class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                                                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <span class="font-weight-bold text-success" id="health">75</span>
+                                                    <span class="text-muted">/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card border-left-secondary shadow-sm h-100">
+                                            <div class="card-body py-2">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <i class="fas fa-shield-alt text-secondary mr-2"></i>
+                                                    <span class="font-weight-bold"><span id="PlayerArmourTranslation">Armor</span></span>
+                                                </div>
+                                                <div class="progress mb-1" style="height: 6px;">
+                                                    <div id="armourprogress" class="progress-bar bg-secondary progress-bar-striped progress-bar-animated" 
+                                                         role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <span class="font-weight-bold text-secondary" id="armour">50</span>
+                                                    <span class="text-muted">/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card border-left-warning shadow-sm h-100">
+                                            <div class="card-body py-2">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <i class="fas fa-utensils text-warning mr-2"></i>
+                                                    <span class="font-weight-bold"><span id="PlayerFoodTranslation">Hunger</span></span>
+                                                </div>
+                                                <div class="progress mb-1" style="height: 6px;">
+                                                    <div id="foodprogress" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" 
+                                                         role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <span class="font-weight-bold text-warning" id="hunger">60</span>
+                                                    <span class="text-muted">/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card border-left-info shadow-sm h-100">
+                                            <div class="card-body py-2">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <i class="fas fa-tint text-info mr-2"></i>
+                                                    <span class="font-weight-bold"><span id="PlayerWaterTranslation">Thirst</span></span>
+                                                </div>
+                                                <div class="progress mb-1" style="height: 6px;">
+                                                    <div id="waterprogress" class="progress-bar bg-info progress-bar-striped progress-bar-animated" 
+                                                         role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <span class="font-weight-bold text-info" id="thirst">80</span>
+                                                    <span class="text-muted">/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card border-left-primary shadow-sm">
+                                            <div class="card-body py-2">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-fingerprint text-primary mr-2"></i>
+                                                    <div class="flex-grow-1">
+                                                        <small class="text-muted d-block">
+                                                            <span id="PlayerIdentifiersTranslation">Identifiers</span>
+                                                            <i class="fas fa-eye ml-2 text-info identifiers-toggle-eye" style="cursor: pointer;" title="Click to reveal/hide identifiers"></i>
+                                                        </small>
+                                                                                                <code class="small" id="identifiers" style="
+                                            word-wrap: break-word; 
+                                            overflow-wrap: break-word; 
+                                            white-space: pre-wrap; 
+                                            display: block; 
+                                            max-width: 100%; 
+                                            cursor: pointer;
+                                            user-select: none;
+                                        " title="Click to reveal/hide">••••••••••••••••••••</code>
+                                        <code class="small d-none" id="identifiers-real" style="
+                                            word-wrap: break-word; 
+                                            overflow-wrap: break-word; 
+                                            white-space: pre-wrap; 
+                                            display: none; 
+                                            max-width: 100%;
+                                        ">steam:123456789abcdef</code>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12" id="playerInteractionColumn">
+                                <div class="card shadow">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary float-left"><span id="PlayerInteractionTranslation"></span></h6>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="playerInteractionCard">
+                                        <div class="card-body">
+                                            <!-- First Row: Essential Player Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-4" id="playergeneralactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-success text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-heart mr-2"></i>
+                                                                <span id="PlayerGeneralActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Revive" data-action="revive" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-medkit"></i>
+                                                        </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Max Food/Water" data-action="foodandwater" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-utensils"></i>
+                                                        </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Relieve Stress" data-action="relievestress" id="relieveStress" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-grin-beam-sweat"></i>
+                                                        </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Repair Vehicle" data-action="repairplayervehicle" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-wrench"></i>
+                                                        </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Set Player Ped Model" data-action="setpedmodel" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-male"></i>
+                                                        </button>
+                                                            <button class="btn btn-info btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Give Clothing Menu" data-action="clothing" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-tshirt"></i>
+                                                        </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Add Current Vehicle to Player's Garage"
+                                                            data-action="savecar" id="saveCar" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-car"></i>
+                                                        </button>
+                                                            <button class="btn btn-primary btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Save Player to Database" data-action="savedata" id="savePlayer" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-save"></i>
+                                                            </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="playerteleportactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-purple text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-location-arrow mr-2"></i>
+                                                                <span id="PlayerTeleportActionsTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-purple btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Goto" data-action="teleport" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-sign-in-alt"></i>
+                                                        </button>
+                                                            <button class="btn btn-purple btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Bring" data-action="bring" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-sign-out-alt"></i>
+                                                        </button>
+                                                            <button class="btn btn-purple btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Send Back" data-action="sendback" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-hiking"></i>
+                                                        </button>
+                                                            <div class="dropdown d-inline-block">
+                                                                <button class="btn btn-purple btn-sm dropdown-toggle mb-2 mr-2" type="button"
+                                                                    data-toggle="dropdown" data-toggle-second="tooltip" 
+                                                            title="Send to Location" style="width: 60px; height: 45px;">
+                                                                    <i class="fas fa-lg fa-map-pin"></i>
+                                                        </button>
+                                                                <div class="dropdown-menu" id="locationdropdown">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="playersurveillanceactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-warning text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-eye mr-2"></i>
+                                                                <span id="PlayerSurveillanceActionTranslation"></span>
+                                                            </h6>
+                                                    </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Screenshot" data-action="screenshot" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-camera"></i>
+                                                        </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Spectate" data-action="spectate" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-eye"></i>
+                                                            </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Second Row: Management & Control Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-4 mb-4" id="playermonetaryactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-success text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-dollar-sign mr-2"></i>
+                                                                <span id="PlayerMonetaryActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Give Cash" data-action="givecash" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-money-bill"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Remove Cash" data-action="removecash" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-money-bill"></i>
+                                                        </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Give Bank Money" data-action="givebank" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-money-check-alt"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Remove Bank Money" data-action="removebank" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-money-check-alt"></i>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="playerjobgangactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-info text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-users mr-2"></i>
+                                                                <span id="PlayerJobGangActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Set Job" data-action="setjob" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-user-plus"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Remove from Job" data-action="firejob" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-user-minus"></i>
+                                                        </button>
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Set Gang" data-action="setgang" id="setGangButton" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-users"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                                title="Remove from Gang" id="fireGangButton" data-action="firegang" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-users-slash"></i>
+                                                            </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-4 mb-4" id="playerinventoryactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-primary text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-box mr-2"></i>
+                                                                <span id="PlayerInventoryActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-success btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Give Item" data-action="giveitem" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-plus-square"></i>
+                                                        </button>
+                                                            <button class="btn btn-warning btn-sm action mb-2 mr-2" data-toggle="tooltip"
+                                                            title="Open Inventory" data-action="openinventory" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-box-open"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Clear Inventory"
+                                                            data-action="clearinventory" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-trash-alt"></i>
+                                                            </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Third Row: Punishment & Moderation Actions -->
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4" id="playerpunishmentactions">
+                                                    <div class="card h-100 shadow-sm onlineactions">
+                                                        <div class="card-header bg-gradient-danger text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-gavel mr-2"></i>
+                                                                <span id="PlayerPunishmentActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-warning btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Cuff/Uncuff" data-action="cuff" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-handcuffs"></i>
+                                                        </button>
+                                                            <button class="btn btn-info btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Freeze/Unfreeze" data-action="freeze" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-snowflake"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Kill" data-action="kill" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-skull-crossbones"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Kick" data-action="kick" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-user-times"></i>
+                                                            </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 mb-4" id="playerofflineactions">
+                                                    <div class="card h-100 shadow-sm offlineactions">
+                                                        <div class="card-header bg-gradient-dark text-white">
+                                                            <h6 class="mb-0 font-weight-bold">
+                                                                <i class="fas fa-shield-alt mr-2"></i>
+                                                                <span id="PlayerOfflineActionTranslation"></span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <button class="btn btn-info btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Check Warnings"
+                                                            data-action="checkwarns" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-exclamation-triangle"></i>
+                                                        </button>
+                                                            <button class="btn btn-warning btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Warn" data-action="warn" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-exclamation-circle"></i>
+                                                        </button>
+                                                            <button class="btn btn-danger btn-sm action action-danger mb-2 mr-2"
+                                                            data-toggle="tooltip" title="Ban" data-action="ban" style="width: 60px; height: 45px;">
+                                                                <i class="fas fa-lg fa-ban"></i>
+                                                        </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
+                    <div class="container-fluid" id="leaderboardPage">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card shadow mb-12">
+                                    <!-- Card Header - Accordion -->
+                                    <div class="d-block card-header py-3">
+                                        <h6 class="mt-2 font-weight-bold text-primary float-left"><span id="LeaderboardsTranslation">Leaderboards</span></h6>
+                                    </div>
+                                    <!-- Card Content - Collapse -->
+                                    <div class="collapse show" id="Leaderboardcard">
+                                        <!-- This is the cash -->
+                                        <div class="card-body">
+                                            <div class="row m-2" id="mainleaderboard">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <h3><span id="cashLeaderboardTranslation"></span></h3>
+                                                    <table class="table table-sm table" id="cashLeaderboardtable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="cashLeaderboard1Translation"></span></th>
+                                                                <th scope="col"><span id="cashLeaderboard2Translation"></span></th>
+                                                                <th scope="col" data-sortas="numeric"><span id="cashLeaderboard3Translation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="maincashleaderboard2">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- This is the bank -->
+                                        <div class="card-body">
+                                            <div class="row m-2" id="mainleaderboard2">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <h3><span id="bankLeaderboardTranslation"></span></h3>
+                                                    <table class="table table-sm table" id="bankLeaderboardtable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="BankLeaderboard1Translation"></span></th>
+                                                                <th scope="col"><span id="BankLeaderboard2Translation"></span></th>
+                                                                <th scope="col" data-sortas="numeric"><span id="BankLeaderboard3Translation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="mainbankleaderboard2">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <!-- This is the crpyto -->
+                                        <div class="card-body">
+                                            <div class="row m-2" id="mainleaderboard3">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <h3><span id="CryptoLeaderboardTranslation"></span></h3>
+                                                    <table class="table table-sm table" id="cryptoLeaderboardtable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="CryptoLeaderboard1Translation"></span></th>
+                                                                <th scope="col"><span id="CryptoLeaderboard2Translation"></span></th>
+                                                                <th scope="col" data-sortas="numeric"><span id="CryptoLeaderboard3Translation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="maincryptoleaderboard2">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- This is the vehicles -->
+                                            <div class="row m-2" id="mainleaderboard6">
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <h3><span id="LSLeaderboardTranslation"></span></h3>
+                                                    <table class="table table-sm table" id="lastseenLeaderboardtable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col"><span id="LSLeaderboard1Translation"></span></th>
+                                                                <th scope="col"><span id="LSLeaderboard2Translation"></span></th>
+                                                                <th scope="col"><span id="LSLeaderboard3Translation"></span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="mainlastseenleaderboard2">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <!-- End of Main Content -->
+                <div class="hide justify-content-center h-100 modal fade" tabindex="-1" role="dialog"
+                    data-backdrop="static" id="confirm">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><span id="AreYouSureTranslation"></span></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="confirm-body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn confirm-yes btn-success"><span id="ContinueTranslation"></span></button>
+                                <button type="button" class="btn confirm-no btn-secondary"
+                                    data-dismiss="modal"><span id="CancelTranslation"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hide justify-content-center h-100 modal fade" tabindex="-1" role="dialog"
+                    data-backdrop="static" id="settings">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title">
+                                    <i class="fas fa-cogs mr-2"></i>
+                                    <span id="SettingsTranslation"></span>
+                                </h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <!-- Appearance Settings Section -->
+                                <div class="mb-4">
+                                    <h6 class="font-weight-bold text-primary mb-3">
+                                        <i class="fas fa-palette mr-2"></i>
+                                        Appearance Settings
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="themesel" class="form-label font-weight-bold">
+                                                <i class="fas fa-paint-brush mr-1"></i>
+                                                <span id="ThemeTranslation"></span>
+                                            </label>
+                                            <select class="form-control form-control-lg shadow-sm" id="themesel" aria-label="Theme">
+                                        <option value="0" selected>Default Theme</option>
+                                        <option value="1">Silver</option>
+                                        <option value="2">Green</option>
+                                        <option value="3">Blue Day</option>
+                                        <option value="4">Red Hot</option>
+                                        <option value="5">Gunmetal Grey</option>
+                                        <option value="6">Blue Banana</option>
+                                        <option value="7">Dark Night</option>
+                                        <option value="8">Cool Purple</option>
+                                        <option value="9">Crazy Gold</option>
+                                        <option value="10">Ocean Blue</option>
+                                        <option value="11">Sunset Orange</option>
+                                        <option value="12">Forest Green</option>
+                                        <option value="13">Royal Purple</option>
+                                        <option value="14">Rose Gold</option>
+                                        <option value="15">Teal Mint</option>
+                                        <option value="16">Crimson Red</option>
+                                        <option value="17">Slate Blue</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="fontsel" class="form-label font-weight-bold">
+                                                <i class="fas fa-font mr-1"></i>
+                                                <span id="FontTranslation"></span>
+                                            </label>
+                                            <select class="form-control form-control-lg shadow-sm" id="fontsel" aria-label="Font">
+                                        <option value="0" selected>Default Font (Nunito)</option>
+                                        <option value="1">Orbitron</option>
+                                        <option value="2">Oxanium</option>
+                                        <option value="3">Anta</option>
+                                        <option value="4">Electrolize</option>
+                                        <option value="5">Inter</option>
+                                        <option value="6">Poppins</option>
+                                        <option value="7">Roboto</option>
+                                        <option value="8">Montserrat</option>
+                                        <option value="9">Rajdhani</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Display Preferences Section -->
+                                <div class="mb-4">
+                                    <h6 class="font-weight-bold text-primary mb-3">
+                                        <i class="fas fa-desktop mr-2"></i>
+                                        Display Preferences
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card shadow-sm p-3 h-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <label for="darkmode" class="form-label font-weight-bold mb-1">
+                                                            <i class="fas fa-moon mr-1"></i>
+                                                            <span id="DarkModeTranslation"></span>
+                                                        </label>
+                                                        <small class="d-block" style="opacity: 0.7;">Toggle dark theme</small>
+                                                    </div>
+                                                    <input id="darkmode" type="checkbox" data-toggle="toggle" data-size="sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card shadow-sm p-3 h-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <label for="seethroughmode" class="form-label font-weight-bold mb-1">
+                                                            <i class="fas fa-eye mr-1"></i>
+                                                            <span id="SeeModeTranslation"></span>
+                                                        </label>
+                                                        <small class="d-block" style="opacity: 0.7;">Enable transparency</small>
+                                                    </div>
+                                                    <input id="seethroughmode" type="checkbox" data-toggle="toggle" data-size="sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card shadow-sm p-3 h-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <label for="smallmode" class="form-label font-weight-bold mb-1">
+                                                            <i class="fas fa-compress-alt mr-1"></i>
+                                                            <span id="SmallModeTranslation">Small Mode</span>
+                                                        </label>
+                                                        <small class="d-block" style="opacity: 0.7;">Compact interface</small>
+                                                    </div>
+                                                    <input id="smallmode" type="checkbox" data-toggle="toggle" data-size="sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <div class="card shadow-sm p-3 h-100">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <label for="showplayergraph" class="form-label font-weight-bold mb-1">
+                                                            <i class="fas fa-chart-line mr-1"></i>
+                                                            <span id="ShowPlayerGraphTranslation"></span>
+                                                        </label>
+                                                        <small class="d-block" style="opacity: 0.7;">Show player count graph on dashboard</small>
+                                                    </div>
+                                                    <input id="showplayergraph" type="checkbox" data-toggle="toggle" data-size="sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Notification Settings Section -->
+                                <div class="mb-3">
+                                    <h6 class="font-weight-bold text-primary mb-3">
+                                        <i class="fas fa-bell mr-2"></i>
+                                        Notification Settings
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card shadow-sm p-3">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <label for="Notifications" class="form-label font-weight-bold mb-1">
+                                                            <i class="fas fa-bell mr-1"></i>
+                                                            <span id="NotificationsTranslation"></span>
+                                                        </label>
+                                                        <small class="d-block" style="opacity: 0.7;">Enable system notifications</small>
+                                                    </div>
+                                                    <input id="Notifications" type="checkbox" data-toggle="toggle" data-size="sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                 <button type="button" class="btn btn-primary btn-lg px-4" data-dismiss="modal">
+                                     <i class="fas fa-check mr-2"></i>
+                                     <span id="CloseTranslation"></span>
+                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hide justify-content-center h-100 modal fade" tabindex="-1" role="dialog"
+                    data-backdrop="static" id="warningsmodal">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><span id="WarningsTranslation"></span></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="warnings-body">
+                                <div class="row" id="warninglist">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <table class="table table-sm table" id="warninglisttable">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"><span id="WarningsIDTranslation"></span></th>
+                                                    <th scope="col"><span id="WarningsReasonTranslation"></span></th>
+                                                    <th scope="col"><span id="WarningsWarnedTranslation"></span></th>
+                                                    <th scope="col"><span id="WarningsIssueTranslation"></span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="warninglistbody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span id="CloseTranslation2"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hide justify-content-center h-100 modal fade" tabindex="-1" role="dialog" data-backdrop="static" id="reportmodal">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><span id="ReportInfoTranslation2"></span></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="warnings-body">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12" id="reportinfobox">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer" id="reportsFooter">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><span id="CloseTranslation3"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="sticky-footer">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>919ADMIN <span id="919adminversion"></span><br />Copyright &copy; 2021-2025 919DESIGN <img
+                                    src="assets/img/ca.png" class="mb-1" /></span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+    </div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- External JavaScript Dependencies -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="assets/js/bootstrap4-toggle.min.js"></script>
+    <script src="assets/js/bootstrap-toaster.min.js"></script>
+    <script src="assets/js/bootbox.min.js"></script>
+    <script src="assets/js/sb-admin-2.js"></script>
+    <script src="assets/js/fancyTable.min.js"></script>
+    <script src="assets/js/jquery.minicolors.min.js"></script>
+    <script src="assets/js/leaflet.js"></script>
+
+
+    <script src="js/core.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/events.js"></script>
+</body>
+
+</html>
