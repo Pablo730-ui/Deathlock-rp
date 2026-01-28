@@ -30,7 +30,7 @@ Config.ExitInteriorPrompt = "[E] Exit Garage"
 
 -- Target
 Config.UseTarget = false
-Config.Target = "qb_target" -- or "qb-target"
+Config.Target = "ox_target" -- or "qb-target"
 Config.TargetPed = "s_m_y_valet_01"
 
 -- Radial
